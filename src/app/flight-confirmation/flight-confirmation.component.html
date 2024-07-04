@@ -1,0 +1,9 @@
+<div class="container mt-5">
+    <h2>Flight Confirmation</h2>
+    <div *ngIf="confirmationMessage">
+      <div class="alert alert-success">
+        {{ confirmationMessage }}
+      </div>
+      <button class="btn btn-primary" (click)="downloadTicket()">Download Ticket</button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.background {
+    margin: 0px;
+    height: 150vh;
+    color: #fff;
+    background-image: url("../app/assets/images/flight.png");
+    background-size: 100%;
+    background-size: cover;
+
+}
+
+@keyframes scrollBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -100% 0;
+    }
+  }
+  
+  .scroll-background {
+    animation: scrollBackground 60s linear infinite;
+    background-image: url('../app/assets/images/flight.png');
+    background-size: cover; /* or contain, depending on your needs */
+    background-repeat: repeat-x; /* Make the background repeat horizontally */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color for visibility */
+    text-align: center;
+    font-size: 2em;
+  }
+  
+
+  .background {
+    background-image: url("../app/assets/images/flight.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 320vh;
+  }

@@ -1,0 +1,58 @@
+<div class="container mt-4 col-md-4">
+    <h2>Search Flights</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="searchFlights()">
+      <div class="form-group">
+        <label for="source">Source:</label>
+        <input type="text" class="form-control" id="source" formControlName="source" placeholder="Source" maxlength="50">
+        <div *ngIf="(searchForm.get('source')?.touched || this.submitted )&& searchForm.get('source')?.invalid" class="text-danger">
+            Source is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="destination">Destination:</label>
+        <input type="text" class="form-control" id="destination" formControlName="destination" placeholder="Destination" maxlength="50">
+        <div *ngIf="(searchForm.get('destination')?.touched || this.submitted) && searchForm.get('destination')?.invalid" class="text-danger">
+            Destination is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date">Departure Date:</label>
+        <input type="date" class="form-control" id="date" formControlName="date">
+        <div *ngIf="(searchForm.get('date')?.touched || this.submitted ) && searchForm.get('date')?.invalid" class="text-danger">
+            <div *ngIf="searchForm.get('date')?.errors?.['required']">Date is required.</div>
+            <div *ngIf="searchForm.get('date')?.errors?.['invalidDate']">Date cannot be in the past.</div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div formGroupName="guests" class="form-group col-md-6">
+            <label for="adults">Number of Adults:</label>
+            <input type="number" class="form-control" id="adults" min="0" max="5" formControlName="adults">
+            <div *ngIf="(searchForm.get('guests.adults')?.touched || this.submitted) && searchForm.get('guests.adults')?.invalid" class="text-danger">
+            <div *ngIf="searchForm.get('guests.adults')?.errors?.['required']">Number of adults is required.</div>
+            <div *ngIf="searchForm.get('guests.adults')?.errors?.['min']">At least one adult is required.</div>
+            <div *ngIf="searchForm.get('guests.adults')?.errors?.['max']">Add adults up to 5.</div>
+            </div>
+        </div>
+        <div formGroupName="guests" class="form-group col-md-6" id="adultDiv">
+            <label for="children">Number of Children:</label>
+            <input type="number" class="form-control" id="children" min="0" max="2" [maxlength]="1" formControlName="children">
+            <div *ngIf="(searchForm.get('guests.children')?.touched || this.submitted) && searchForm.get('guests.children')?.invalid" class="text-danger">
+            <div *ngIf="searchForm.get('guests.children')?.errors?.['required']">Number of children is required.</div>
+            <div *ngIf="searchForm.get('guests.children')?.errors?.['min']">Number of children cannot be negative.</div>
+            <div *ngIf="searchForm.get('guests.children')?.errors?.['max']">Add childrens up to 2.</div>
+            </div>
+        </div>
+    </div>
+      <div class="form-group">
+        <label for="class">Cabin Class:</label>
+        <select class="form-control" id="cabinClass">
+            <option *ngFor="let c of cabinClass" value="c.name">{{c.name}}</option>
+        </select>
+        <!-- <div *ngIf="(searchForm.get('class')?.touched || this.submitted) && searchForm.get('class')?.invalid" class="text-danger">
+            Cabin class selection is required.
+        </div> -->
+      </div>
+      <button type="submit" class="btn btn-primary mt-2 mb-3">Search</button>
+    </form>
+  </div>
+  

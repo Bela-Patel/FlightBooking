@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.header {
+    padding: 10px 16px;
+
+    color: #f1f1f1;
+}
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+}
+
+.content {
+    padding-top: 102px;
+}
+
+.box-shadow {
+    box-shadow: 0px 35px 50px 20px rgb(32 32 32 / 20%);
+    border-radius: 1rem !important;
+}

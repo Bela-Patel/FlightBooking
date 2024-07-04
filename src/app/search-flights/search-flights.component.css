@@ -1,0 +1,8 @@
+#adultDiv {
+    padding-left: 10px;
+}
+
+.container {
+    box-shadow: 0px 35px 50px 20px rgb(32 32 32 / 20%);
+    border-radius: 1rem !important;
+}

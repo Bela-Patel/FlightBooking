@@ -1,0 +1,123 @@
+<div class="container mt-1 col-md-6" *ngIf="showComp" [formGroup]="contactFormGroup">
+    <h2>Passenger Detail</h2>
+    <div formArrayName="adults">
+        <ng-container *ngFor="let adult of adultsArray.controls; index as i">
+            <form class="row g-4 group-box" [formGroupName]="i">
+                <div class="group-box-title">
+                    <h5>Adult {{i+1}}</h5>
+                </div>
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                        placeholder="First Name" maxlength="20">
+                    <div *ngIf="(adult.get('firstName')?.touched || this.submitted )&& adult.get('firstName')?.invalid"
+                        class="text-danger">
+                        First name is required.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                        placeholder="Last Name" maxlength="20">
+                    <div *ngIf="(adult.get('lastName')?.touched || this.submitted )&& adult.get('lastName')?.invalid"
+                        class="text-danger">
+                        Last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="class">Gender</label>
+                    <select class="form-control" id="gender" formControlName="gender">
+                        <option *ngFor="let g of genders">{{g.name}}</option>
+                    </select>
+                    <div *ngIf="(adult.get('gender')?.touched || this.submitted) && adult.get('gender')?.invalid"
+                        class="text-danger">
+                        Gender is required.
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="form-group" formArrayName="childs">
+        <ng-container *ngFor="let child of childsArray.controls; index as i">
+            <form class="row g-4 group-box" [formGroupName]="i">
+                <div class="group-box-title">
+                    <h5>Child {{i+1}}</h5>
+                </div>
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" id="firstName"
+                        placeholder="First Name" maxlength="20">
+                    <div *ngIf="(child.get('firstName')?.touched || this.submitted )&& child.get('firstName')?.invalid"
+                        class="text-danger">
+                        First name is required.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" id="lastName"
+                        placeholder="Last Name" maxlength="20">
+                    <div *ngIf="(child.get('lastName')?.touched || this.submitted )&& child.get('lastName')?.invalid"
+                        class="text-danger">
+                        Last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="class">Gender</label>
+                    <select class="form-control" id="gender" formControlName="gender">
+                        <option *ngFor="let g of genders">{{g.name}}</option>
+                    </select>
+                    <div *ngIf="(child.get('gender')?.touched || this.submitted) && child.get('gender')?.invalid"
+                        class="text-danger">
+                        Gender is required.
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="form-group mt-3">
+        <form class="row g-4 group-box" [formGroup]="contactFormGroup">
+            <div class="group-box-title">
+                <h5>Contact Details</h5>
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="email" placeholder="abc@gmail.com"
+                    maxlength="30">
+                <div *ngIf="(contactFormGroup.get('email')?.touched || this.submitted) && contactFormGroup.get('email')?.invalid"
+                    class="text-danger">
+                    Email is required.
+                </div>
+                <div *ngIf="contactFormGroup.get('email')?.errors?.['email']" class="text-danger">
+                    Email must be a valid email address.
+                </div>               
+            </div>
+            <div class="col-md-6">
+                <label for="confirmEmail" class="form-label">Confirm Email</label>
+                <input type="email" formControlName="confirmEmail" class="form-control" id="confirmEmail"
+                    placeholder="abc@gmail.com" maxlength="30">
+                <div *ngIf="(contactFormGroup.get('confirmEmail')?.touched || this.submitted) && contactFormGroup.get('confirmEmail')?.invalid"
+                    class="text-danger">
+                    Confirm email is required.
+                </div>
+                <div *ngIf="contactFormGroup.get('confirmEmail')?.errors?.['email']" class="text-danger">
+                    Confirm email must be a valid email address.
+                </div>
+                <div *ngIf="contactFormGroup.hasError('emailsNotMatch')" class="text-danger">
+                    Emails do not match.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="contactNumber" class="form-label">Mobile Number</label>
+                <input type="number" formControlName="contactNumber" class="form-control" id="contactNumber"
+                    placeholder="Mobile Number" maxlength="12">
+                <div *ngIf="(contactFormGroup.get('contactNumber')?.touched || this.submitted) && contactFormGroup.get('contactNumber')?.invalid"
+                    class="text-danger">
+                    Mobile number is required.
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" (click)="confirmBooking()">Book Ticket</button>
+            </div>
+        </form>
+    </div>
+</div>

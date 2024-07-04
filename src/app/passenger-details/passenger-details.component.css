@@ -1,0 +1,17 @@
+.group-box {
+    border-radius: .25rem;
+    padding: 1rem;
+    position: relative;
+    margin-top: 2rem;
+    box-shadow: 0px 35px 50px 20px rgb(32 32 32 / 20%);
+    border-radius: 1rem !important;
+  }
+  .group-box-title {
+    position: absolute;
+    top: -1.0rem;
+    left: 1rem;
+    padding: 0 .5rem;
+    font-weight: bold;
+    font-size: large;   
+    width: 200px;    
+  }

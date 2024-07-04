@@ -1,0 +1,46 @@
+<div class="container mt-3 center">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-2">
+        <h4>Filters</h4>
+        <div>
+          <label for="duration" class="form-label ">Journey Duration</label><br/>
+          <span id="durationRange">5 hours - 20 hours</span><br/>
+          <input type="range" class="form-control-range" id="duration" min="5" max="20" (change)="flightDurationFilter($event)">
+        </div>
+        <div>
+          <label for="duration" class="form-label ">Price</label><br/>
+          <span id="priceRange">$100 - $500</span><br/>
+          <input type="range" class="form-control-range" id="price" min="100" max="500" (change)="flightPriceFilter($event)">
+        </div>
+    </div> 
+    <div class="col-md-8 justify-content-md-center">
+        <h2>Available Flights</h2>
+        <div *ngIf="filterFlights.length > 0; else noFlights">
+          <div *ngFor="let flight of filterFlights" class="row">
+            <div class="row m-2 box-shadow col-md-10" style="min-width: 500px;">
+              <h5 >{{ flight.source }} to {{ flight.destination }}</h5>
+              <div class="col-md-7">
+                <p >
+                  Date: {{ flight.departure_date }}<br>
+                  Time: {{ flight.time }}<br>
+                  Duration: {{ flight.duration }}h<br>
+                  Airline : {{ flight.airline }}<br>
+                  Class : {{ flight.class }}
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p >
+                  Price: ${{ flight.price }} p/p<br>
+                </p>
+                <button class="btn btn-success mb-2" (click)="bookFlight(flight.id)">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #noFlights>
+          <p>No flights available for the selected criteria.</p>
+        </ng-template>
+    </div>
+  </div>
+</div>
+  
