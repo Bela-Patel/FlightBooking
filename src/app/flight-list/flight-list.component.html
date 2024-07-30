@@ -8,9 +8,9 @@
           <input type="range" class="form-control-range" id="duration" min="5" max="20" (change)="flightDurationFilter($event)">
         </div>
         <div>
-          <label for="duration" class="form-label ">Price</label><br/>
+          <label for="price" class="form-label ">Price</label><br/>
           <span id="priceRange">$100 - $500</span><br/>
-          <input type="range" class="form-control-range" id="price" min="100" max="500" (change)="flightPriceFilter($event)">
+          <input type="range" class="form-control-range" id="price" min="100" max="500" value="500" (change)="flightPriceFilter($event)">
         </div>
     </div> 
     <div class="col-md-8 justify-content-md-center">
